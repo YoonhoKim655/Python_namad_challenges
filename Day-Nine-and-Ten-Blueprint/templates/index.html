@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+    Nomad News |  Popular  
+  </title>
+  <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link>
+</head>
+
+<body>
+<h1>Nomad News</h1>
+
+{% for i in range(len(page_datas.get("title"))) %}
+  <span a href="{{data.get("url")[i]}}">{{data.get("title")[i]}}/span>
+  <span>{{data.get("url")[i]}}</span>
+  <span>{{data.get("point")[i]}}</span>
+  <span>{{data.get("by")[i]}}</span>
+  <span>{{data.get("comment")[i]}}</span>
+</body>
+
+</html>
