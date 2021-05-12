@@ -3,20 +3,54 @@
 
 <head>
 	<title>
-    Nomad News |  Popular  
+    Nomad News |
+    
+      {% if order == 'popular' %}
+        Popular
+      {% else %}
+       New
+      {% endif %}
+    
   </title>
   <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link>
 </head>
 
 <body>
-<h1>Nomad News</h1>
+  <header>
+    <h1>Nomad News</h1>
+    <div>
+      Order by:
+      {% if order == 'popular' %}
+        <strong>Popular</strong>
 
-{% for i in range(len(page_datas.get("title"))) %}
-  <span a href="{{data.get("url")[i]}}">{{data.get("title")[i]}}/span>
-  <span>{{data.get("url")[i]}}</span>
-  <span>{{data.get("point")[i]}}</span>
-  <span>{{data.get("by")[i]}}</span>
-  <span>{{data.get("comment")[i]}}</span>
+        |
+
+        <a href="/?order_by=new">New</a>
+      {% else %}
+       <a href="/?order_by=popular">Popular</a>
+
+        |
+        <strong>New</strong>
+      {% endif %}
+      
+    </div>
+  </header>
+      {% for data in datas[:] %}
+        <div>
+          <div>
+            <a href="https://uniformlinednature.serranoarevalo.repl.co/{{data.id}}">
+              <h3>{{data.title}}</h3>
+            </a>
+            (<a href="{{data.url}}" target="_blanl">{{data.url}}</a>)
+          </div>
+          <div>
+             {{data.point}} points | By: {{data.by}} | {{data.comment}} comments
+          </div>
+        </div>
+        <hr />
+    {% endfor %}
+    
+  </main>
 </body>
 
 </html>
